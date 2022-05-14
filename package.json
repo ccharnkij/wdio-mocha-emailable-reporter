@@ -1,0 +1,58 @@
+{
+  "name": "wdio-mocha-emailable-reporter",
+  "version": "1.0.1",
+  "description": "A WebdriverIO plugin. Generates emailable report",
+  "author": "Chanatan Charnkijtawarush",
+  "homepage": "https://github.com/ccharnkij/wdio-mocha-emailable-reporter.git#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccharnkij/wdio-mocha-emailable-reporter.git"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "templates",
+    "renderHtml.js"
+  ],
+  "scripts": {
+    "lint": "eslint ./src test/",
+    "test": "jest"
+  },
+  "keywords": [
+    "reporter",
+    "webdriverio",
+    "wdio",
+    "wdio-reporter"
+  ],
+  "bugs": {
+    "url": "https://github.com/ccharnkij/wdio-mocha-emailable-reporter/issues"
+  },
+  "dependencies": {
+    "@wdio/reporter": "^7.19.7",
+    "app-root-path": "^3.0.0",
+    "nunjucks": "^3.2.3",
+    "pretty-ms": "^7.0.1",
+    "properties-reader": "^2.2.0",
+    "strip-ansi": "^5.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "jest": "^28.1.0",
+    "jest-matchers": "^20.0.3"
+  },
+  "contributors": [
+    "Chanatan Charnkijtawarush"
+  ],
+  "jest": {
+    "testPathIgnorePatterns": [
+      "./src"
+    ]
+  }
+}
