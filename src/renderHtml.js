@@ -29,11 +29,16 @@ const render = (dir, mergedResults, customFileName) => {
     mergedResults.customProp = customProp
 
     const html = nunjucks.render('report.html', mergedResults)
+    const htmlEmail = nunjucks.render('reportEmailBody.html', mergedResults)
 
     const fileName = customFileName || 'result.html'
     const filePath = path.join(dir, fileName)
 
+    const fileEmailName = `${fileName.split('.')[0] + '-email.html'}`
+    const fileEmailPath = path.join(dir, fileEmailName)
+
     fs.writeFileSync(filePath, html)
+    fs.writeFileSync(fileEmailPath, htmlEmail)
 }
 
 const renderHtml = (...args) => {

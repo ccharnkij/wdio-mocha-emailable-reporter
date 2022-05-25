@@ -1,0 +1,117 @@
+
+<html>
+    <body style="box-sizing: border-box; margin: 0; font-family: system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Liberation Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'; font-size: 1rem; font-weight: 400; line-height: 1.5; color: #212529; background-color: #fff; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent;">
+        <div style="box-sizing: border-box; width: 100%; padding-right: .75rem; padding-left: .75rem; margin-right: auto; margin-left: auto;">
+            <div style="box-sizing: border-box; display: flex; flex-wrap: wrap; margin-top: 0; margin-right: -0.75rem; margin-left: -0.75rem;">
+                <div style="box-sizing: border-box; flex-shrink: 0; max-width: 100%; padding-right: 0.75rem; padding-left: 0.75rem; margin-top: 0; flex: 0 0 auto; width: 50%; justify-content: center;">
+                    <div style="box-sizing: border-box; display: flex; flex-wrap: wrap; margin-top: 0; margin-right: -0.75rem; margin-left: -0.75rem;">
+                        <table style="box-sizing: border-box; caption-side: bottom; border-collapse: collapse; flex-shrink: 0; max-width: 100%; padding-right: 0.75rem; padding-left: 0.75rem; margin-top: 0; width: 100%; margin-bottom: 1rem; color: #212529; vertical-align: top; border-color: #dee2e6;" width="100%" valign="top">
+                            <thead style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 0; vertical-align: bottom;" valign="bottom">
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0; text-align: center;" align="center">
+                                    <th colspan="2" style="box-sizing: border-box; text-align: inherit; text-align: -webkit-match-parent; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" align="-webkit-match-parent" bgcolor="transparent">Summary</th>
+                                </tr>
+                            </thead>
+                            <tbody style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 0; vertical-align: inherit; border-top: 2px solid currentColor;" valign="inherit">
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; color: #212529;" width="30%" bgcolor="transparent">Start time</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; color: #212529; text-align: center;" bgcolor="transparent" align="center">{{ stats.start }}</td>
+                                </tr>
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" width="30%" bgcolor="transparent">End time</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; text-align: center;" bgcolor="transparent" align="center">{{ stats.end }}</td>
+                                </tr>
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; color: #212529;" width="30%" bgcolor="transparent">Duration</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; color: #212529; text-align: center;" bgcolor="transparent" align="center">{{ prettyMs(stats.start, stats.end) }}</td>
+                                </tr>
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" width="30%" bgcolor="transparent">Passes</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; text-align: center;" bgcolor="transparent" align="center">{{ stats.passes }}</td>
+                                </tr>
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; color: #212529;" width="30%" bgcolor="transparent">Failures</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; color: #212529; text-align: center;" bgcolor="transparent" align="center">{{ stats.failures }}</td>
+                                </tr>
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" width="30%" bgcolor="transparent">Skipped</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; text-align: center;" bgcolor="transparent" align="center">{{ stats.skipped }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {% if customProp != {} %}
+                        <div style="box-sizing: border-box; --bs-gutter-x: 1.5rem; --bs-gutter-y: 0; display: flex; flex-wrap: wrap; margin-top: 0; margin-right: -0.75rem; margin-left: -0.75rem;">
+                            <br style="box-sizing: border-box; flex-shrink: 0; width: 100%; max-width: 100%; padding-right: 0.75rem; padding-left: 0.75rem; margin-top: 0;" />
+
+                            <table style="box-sizing: border-box; caption-side: bottom; border-collapse: collapse; flex-shrink: 0; max-width: 100%; padding-right: 0.75rem; padding-left: 0.75rem; margin-top: 0; width: 100%; margin-bottom: 1rem; color: #212529; vertical-align: top; border-color: #dee2e6;" width="100%" valign="top">
+                                <tbody style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 0; vertical-align: inherit;" valign="inherit">
+                                    {% for key, value in customProp %}
+                                        <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                            {% if loop.index % 2 != 0 %}
+                                                <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px;" width="30%" bgcolor="transparent">{{ key }}</td>
+                                                <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; text-align: center;" bgcolor="transparent" align="center">{{ value }}</td>
+                                            {% else %}
+                                                <td style="box-sizing: border-box; border-color: inherit; border-style: solid; width: 30%; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" width="30%" bgcolor="transparent">{{ key }}</td>
+                                                <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; text-align: center;" bgcolor="transparent" align="center">{{ value }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <br style="box-sizing: border-box;" />
+
+            <div style="box-sizing: border-box; --bs-gutter-x: 1.5rem; --bs-gutter-y: 0; display: flex; flex-wrap: wrap; margin-top: 0; margin-right: -0.75rem; margin-left: -0.75rem;">
+                <table style="box-sizing: border-box; caption-side: bottom; border-collapse: collapse; flex-shrink: 0; max-width: 100%; padding-right: 0.75rem; padding-left: 0.75rem; margin-top: 0; width: 100%; margin-bottom: 1rem; color: #212529; vertical-align: top; border-color: #dee2e6;" width="100%" valign="top">
+                    <thead style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 0; vertical-align: bottom;" valign="bottom">
+                        <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0; text-align: center;" align="center">
+                            <th style="box-sizing: border-box; text-align: inherit; text-align: -webkit-match-parent; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; width: 30%;" align="-webkit-match-parent" bgcolor="transparent">Features</th>
+                            <th style="box-sizing: border-box; text-align: inherit; text-align: -webkit-match-parent; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; width: 30%;" align="-webkit-match-parent" bgcolor="transparent">Scenarios</th>
+                            <th style="box-sizing: border-box; text-align: inherit; text-align: -webkit-match-parent; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; width: 10%;" align="-webkit-match-parent" bgcolor="transparent">Status</th>
+                            <th style="box-sizing: border-box; text-align: inherit; text-align: -webkit-match-parent; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: rgba(0, 0, 0, 0.03); border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05); border-width: 0 1px; width: 30%;" align="-webkit-match-parent" bgcolor="transparent">Errors</th>
+                        </tr>
+                    </thead>
+                    <tbody style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 0; vertical-align: inherit; border-top: 2px solid currentColor;" valign="inherit">
+                        {% for suite in suites.suites %}
+                            {% for test in suite.tests %}
+                                <tr style="box-sizing: border-box; border-color: inherit; border-style: solid; border-width: 1px 0;">
+                                    {% if loop.index == 1 %}
+                                        <td rowspan="{{ suite.tests.length}}" style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; text-align: center;" bgcolor="transparent" align="center">
+                                            {% set name = suite.title.split('(') %}
+                                                {{ name[0] }}
+                                            <p style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; font-size: .875em;">({{ name[1] }}</p>
+                                        </td>
+                                    {% endif %}
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" bgcolor="transparent">{{ test.fullTitle }}</td>
+
+                                    <!-- Status row -->
+                                    {% if test.pass %}
+                                        <td style="box-sizing: border-box; border-color: inherit; border-style: solid; --bs-text-opacity: 1; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; color: rgba(25,135,84);" bgcolor="transparent">Pass</td>
+                                    {% elif test.fail %}
+                                        <td style="box-sizing: border-box; border-color: inherit; border-style: solid; --bs-text-opacity: 1; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; color: rgba(220,53,69);" bgcolor="transparent">Fail</td>
+                                    {% elif test.pending %}
+                                        <td style="box-sizing: border-box; border-color: inherit; border-style: solid; --bs-text-opacity: 1; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; color: rgba(255,193,7);" bgcolor="transparent">Pending</td>
+                                    {% else %}
+                                        <td style="box-sizing: border-box; border-color: inherit; border-style: solid; --bs-text-opacity: 1; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; color: rgba(255,193,7);" bgcolor="transparent">Skipped</td>
+                                    {% endif %}
+
+                                    <!-- Error row -->
+                                    {% if test.fail and test.err != {} %}
+                                        <td style="box-sizing: border-box; border-color: inherit; border-style: solid; font-size: .875em; --bs-text-opacity: 1; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px; color: rgba(220,53,69);" bgcolor="transparent">{{ test.err.message }}</td>
+                                    {% else %}
+                                        <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" bgcolor="transparent">&nbsp;</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
