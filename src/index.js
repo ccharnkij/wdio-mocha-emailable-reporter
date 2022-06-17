@@ -11,14 +11,20 @@ class WdioMochaEmailableReporter extends WDIOReporter {
 
     onRunnerStart (runner) {
         this.config = runner.config
-        this.sanitizedCaps = runner.sanitizedCapabilities
         // Set sessionId
         if (runner.isMultiremote) {
             this.sessionId = {}
-            for (const name in runner.capabilities) {
-                this.sessionId[name] = runner.capabilities[name].sessionId
-            }
+            let sanitizedCapabilities = ''
+            Object.entries(runner.capabilities).forEach(([key, value], i) => {
+                this.sessionId[key] = value.sessionId
+                sanitizedCapabilities = sanitizedCapabilities.concat(`${value.browserName}.${value.browserVersion}.${value.platformName.split(' ')[0]}`)
+                if (i < Object.keys(runner.capabilities).length - 1) {
+                    sanitizedCapabilities = sanitizedCapabilities.concat(', ')
+                }
+            })
+            this.sanitizedCaps = sanitizedCapabilities
         } else {
+            this.sanitizedCaps = runner.sanitizedCapabilities
             this.sessionId = runner.sessionId
         }
 
