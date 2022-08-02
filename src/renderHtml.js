@@ -56,7 +56,11 @@ function getDataFromFiles (dir, filePattern) {
     const data = []
 
     fileNames.forEach(fileName => {
-        data.push(JSON.parse(fs.readFileSync(`${dir}/${fileName}`)))
+        try {
+            data.push(JSON.parse(fs.readFileSync(`${dir}/${fileName}`)))
+        } catch (e) {
+            // Invalid file
+        }
     })
 
     return data
