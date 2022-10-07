@@ -1,6 +1,6 @@
 {
   "name": "wdio-mocha-emailable-reporter",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A WebdriverIO plugin. Generates emailable report",
   "author": "Chanatan Charnkijtawarush",
   "homepage": "https://github.com/ccharnkij/wdio-mocha-emailable-reporter.git#readme",

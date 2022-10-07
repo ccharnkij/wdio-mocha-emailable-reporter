@@ -46,9 +46,13 @@ const renderHtml = (...args) => {
     const filePattern = args[1] || process.argv[3]
     const customFileName = args[2] || process.argv[4]
 
-    const rawData = getDataFromFiles(dir, filePattern)
-    const mergedResults = mergeData(rawData)
-    render(dir, mergedResults, customFileName)
+    try {
+        const rawData = getDataFromFiles(dir, filePattern)
+        const mergedResults = mergeData(rawData)
+        render(dir, mergedResults, customFileName)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 function getDataFromFiles (dir, filePattern) {
@@ -85,6 +89,14 @@ function mergeData (rawData) {
             mergedResults.stats.hasSkipped = mergedResults.stats.skipped > 0
             mergedResults.stats.passPercent = mergedResults.stats.tests === 0 ? 0 : Math.round((mergedResults.stats.passes / mergedResults.stats.tests) * 100)
             mergedResults.stats.pendingPercent = mergedResults.stats.tests === 0 ? 0 : Math.round((mergedResults.stats.pending / mergedResults.stats.tests) * 100)
+
+            // duration
+            if (mergedResults.stats.start > data.stats.start) {
+                mergedResults.stats.start = data.stats.start
+            }
+            if (mergedResults.stats.end < data.stats.end) {
+                mergedResults.stats.end = data.stats.end
+            }
 
             // add suites
             data.suites.suites.forEach(suite => {
