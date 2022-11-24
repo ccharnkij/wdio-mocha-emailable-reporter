@@ -2,11 +2,17 @@ const WDIOReporter = require('@wdio/reporter').default
 const Suite = require('./suite')
 const Stats = require('./stats')
 const Test = require('./test')
+const { events } = require('./eventType')
 
 class WdioMochaEmailableReporter extends WDIOReporter {
     constructor (options) {
         options = Object.assign(options)
         super(options)
+        this.registerListeners()
+    }
+
+    registerListeners () {
+        process.on(events.addComment, this.addComments.bind(this))
     }
 
     onRunnerStart (runner) {
@@ -74,6 +80,14 @@ class WdioMochaEmailableReporter extends WDIOReporter {
         this.results.stats.end = runner.end
         this.results.stats.duration = runner.duration
         this.write(JSON.stringify(this.results))
+    }
+
+    addComments (args) {
+        this.currTest.addCommentContext(args)
+    }
+
+    static addComment = (value) => {
+        process.emit(events.addComment, value)
     }
 }
 

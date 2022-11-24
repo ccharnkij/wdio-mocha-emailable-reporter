@@ -21,6 +21,23 @@ const render = (dir, mergedResults, customFileName) => {
         }
     })
 
+    environment.addGlobal('addComments', function (contextString) {
+        const context = JSON.parse(contextString)
+        let comments = ''
+
+        for (let i = 0; i < context.length; i++) {
+            if (context[i].title === 'Comment') {
+                comments += context[i].value + '<br/>'
+            }
+        }
+
+        if (comments !== '') {
+            comments += '<br/>'
+        }
+
+        return comments
+    })
+
     environment.addGlobal('prettyMs', function (start, end) {
         return prettyMs(Date.parse(end) - Date.parse(start))
     })

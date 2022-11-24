@@ -26,7 +26,7 @@ describe('Test Class Tests',() => {
         const sampleTest = { title: 'This is a test', context: "this is a test" }
         const test = new Test(sampleTest,'1234')
         const result = { state: 'passed' }
-        
+
         test.updateResult(result)
         expect(test.state).toBe(result.state)
         expect(test.pass).toBe(true)
@@ -36,7 +36,7 @@ describe('Test Class Tests',() => {
         const sampleTest = { title: 'This is a test', context: "this is a test" }
         const test = new Test(sampleTest,'1234')
         const result = { state: 'skipped' }
-        
+
         test.updateResult(result)
         expect(test.state).toBe(result.state)
         expect(test.pending).toBe(true)
@@ -47,7 +47,7 @@ describe('Test Class Tests',() => {
         const sampleTest = { title: 'This is a test', context: "this is a test" }
         const test = new Test(sampleTest,'1234')
         const result = { state: 'failed', error: { type: 'sample error', message: 'this is an error', stack: 'blah blah blah'} }
-        
+
         test.updateResult(result)
         expect(test.state).toBe(result.state)
         expect(test.fail).toBe(true)
@@ -61,7 +61,7 @@ describe('Test Class Tests',() => {
     it('Should successfully add Session ID Context',()=>{
         const sampleTest = { title: 'This is a test' }
         const test = new Test(sampleTest,'1234')
-       
+
         test.addSessionContext('123456')
         expect(test.context).toStrictEqual([{ title: 'Session Id', value: '123456' }])
     })
@@ -69,8 +69,16 @@ describe('Test Class Tests',() => {
     it('Should successfully add Screenshot Context',()=>{
         const sampleTest = { title: 'This is a test' }
         const test = new Test(sampleTest,'1234')
-       
+
         test.addScreenshotContext('abcdefg')
         expect(test.context).toStrictEqual([{ title: 'Screenshot', value: 'data:image/jpeg;base64,abcdefg' }])
+    })
+
+    it('Should successfully add Comment Context',()=>{
+        const sampleTest = { title: 'This is a test' }
+        const test = new Test(sampleTest,'1234')
+
+        test.addCommentContext('abcdefg')
+        expect(test.context).toStrictEqual([{ title: 'Comment', value: 'abcdefg' }])
     })
 })

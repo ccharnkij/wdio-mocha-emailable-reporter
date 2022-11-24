@@ -72,6 +72,13 @@ module.exports = class {
             value: `data:image/jpeg;base64,${value}`
         })
     }
+
+    addCommentContext (value) {
+        this.context.push({
+            title: 'Comment',
+            value
+        })
+    }
 }
 
 function addTestContext (data) {

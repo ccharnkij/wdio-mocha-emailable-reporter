@@ -72,3 +72,13 @@ export BASE_URL=http://www.test.com
 NAME=Test
 BASE_URL=${BASE_URL}
 ```
+
+## Custom comments
+
+Comments can be added to the report by using the `addComment` event.
+
+```
+import WdioMochaEmailableReporter from 'wdio-mocha-emailable-reporter';
+
+WdioMochaEmailableReporter.addComment('test')
+```

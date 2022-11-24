@@ -102,7 +102,7 @@
                             <th style="width: 20%">Features</th>
                             <th style="width: 30%">Scenarios</th>
                             <th style="width: 10%">Status</th>
-                            <th style="width: 30%">Errors</th>
+                            <th style="width: 30%">Comments</th>
                             <th style="width: 10%">Screenshots</th>
                         </tr>
                     </thead>
@@ -130,12 +130,12 @@
                                         <td class="text-warning">Skipped</td>
                                     {% endif %}
 
-                                    <!-- Error row -->
+                                    <!-- Commenet row -->
+                                    <td>{{ addComments(test.context) | safe }}
                                     {% if test.fail and test.err != {} %}
-                                        <td class="text-danger small">{{ test.err.message }}</td>
-                                    {% else %}
-                                        <td>&nbsp;</td>
+                                        <span class="text-danger small">{{ test.err.message }}</span>
                                     {% endif %}
+                                    </td>
 
                                     <!-- Screenshot row -->
                                     <td>
