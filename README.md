@@ -3,6 +3,12 @@ WDIO Mocha Emailable Reporter
 
 Generates test results in the a single page emailable HTML. Inspired by [wdio-mochawesome-reporter](https://github.com/fijijavis/wdio-mochawesome-reporter), this is pretty much a clone with the exception of generating a single page HTML report instead of merged json file.
 
+## Bug on WDIO v7
+
+Webdriverio v7, Multiremote feature has a bug triggering `onRunnerEnd` if an error occurs when it is closing a session.
+
+This is bypass by using `onSuiteEnd`, instead, to write the output file. Please be mindful of this and only have 1 suite. This is only for v1.2.0.
+
 ## Installation
 
 * NPM

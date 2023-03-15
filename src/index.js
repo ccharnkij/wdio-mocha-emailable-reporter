@@ -74,13 +74,17 @@ class WdioMochaEmailableReporter extends WDIOReporter {
     onSuiteEnd (suite) {
         this.currSuite.duration = suite.duration
         this.results.suites.addSuite(this.currSuite)
-    }
 
-    onRunnerEnd (runner) {
-        this.results.stats.end = runner.end
-        this.results.stats.duration = runner.duration
+        this.results.stats.end = suite.end
+        this.results.stats.duration = suite.duration
         this.write(JSON.stringify(this.results))
     }
+
+    // onRunnerEnd (runner) {
+    //     this.results.stats.end = runner.end
+    //     this.results.stats.duration = runner.duration
+    //     this.write(JSON.stringify(this.results))
+    // }
 
     addComments (args) {
         this.currTest.addCommentContext(args)
