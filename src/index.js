@@ -23,7 +23,7 @@ class WdioMochaEmailableReporter extends WDIOReporter {
             let sanitizedCapabilities = ''
             Object.entries(runner.capabilities).forEach(([key, value], i) => {
                 this.sessionId[key] = value.sessionId
-                sanitizedCapabilities = sanitizedCapabilities.concat(`${value.browserName}.${value.browserVersion}.${value.platformName.split(' ')[0]}`)
+                sanitizedCapabilities = sanitizedCapabilities.concat(`${value.browserName}.${value.browserVersion}.${value.platformName}`)
                 if (i < Object.keys(runner.capabilities).length - 1) {
                     sanitizedCapabilities = sanitizedCapabilities.concat(', ')
                 }
