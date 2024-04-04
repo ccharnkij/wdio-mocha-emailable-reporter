@@ -54,8 +54,12 @@ const render = (dir, mergedResults, customFileName) => {
     const fileEmailName = `${fileName.split('.')[0] + '-email.html'}`
     const fileEmailPath = path.join(dir, fileEmailName)
 
+    const mergedName = 'merged-data.json'
+    const mergedPath = path.join(dir, mergedName)
+
     fs.writeFileSync(filePath, html)
     fs.writeFileSync(fileEmailPath, htmlEmail)
+    fs.writeFileSync(mergedPath, JSON.stringify(mergedResults))
 }
 
 const renderHtml = (...args) => {
