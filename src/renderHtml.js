@@ -13,12 +13,19 @@ const render = (dir, mergedResults, customFileName) => {
 
     environment.addGlobal('renderImage', function (contextString) {
         const context = JSON.parse(contextString)
+        const screenshots = []
 
         for (let i = 0; i < context.length; i++) {
             if (context[i].title === 'Screenshot') {
-                return context[i].value
+                screenshots.push(context[i].value)
             }
         }
+
+        if (screenshots.length <= 1) {
+            return screenshots
+        }
+
+        return screenshots.splice(screenshots.length - 2)
     })
 
     environment.addGlobal('addComments', function (contextString) {

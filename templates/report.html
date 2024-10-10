@@ -140,7 +140,9 @@
                                     <!-- Screenshot row -->
                                     <td>
                                         {% if test.fail %}
-                                            <img alt="No screenshot" src="{{ renderImage(test.context) }}" width="50" height="50" />
+                                            {% for img in renderImage(test.context) %}
+                                                <img alt="No screenshot" src="{{ img }}" width="50" height="50" />
+                                            {% endfor %}
                                         {% else %}
                                             &nbsp;
                                         {% endif %}
