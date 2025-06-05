@@ -5,6 +5,7 @@ const prettyMs = require('pretty-ms')
 const propertiesReader = require('properties-reader')
 const appRoot = require('app-root-path')
 const propFile = appRoot + '/mocha-emailable.properties'
+const sharp = require('sharp')
 
 const render = (dir, mergedResults, customFileName) => {
     const environment = nunjucks.configure([path.join(__dirname, '../templates/')], { // set folders with templates
@@ -69,7 +70,7 @@ const render = (dir, mergedResults, customFileName) => {
     fs.writeFileSync(mergedPath, JSON.stringify(mergedResults))
 }
 
-const renderHtml = (...args) => {
+const renderHtml = async (...args) => {
     const dir = args[0] || process.argv[2]
     const filePattern = args[1] || process.argv[3]
     const customFileName = args[2] || process.argv[4]
@@ -77,6 +78,23 @@ const renderHtml = (...args) => {
     try {
         const rawData = getDataFromFiles(dir, filePattern)
         const mergedResults = mergeData(rawData)
+
+        for (let i = 0; i < mergedResults.suites.suites.length; i++) {
+            for (let j = 0; j < mergedResults.suites.suites[i].tests.length; j++) {
+                if (mergedResults.suites.suites[i].tests[j].context && mergedResults.suites.suites[i].tests[j].context.includes('Screenshot')) {
+                    const context = JSON.parse(mergedResults.suites.suites[i].tests[j].context)
+                    for (let k = 0; k < context.length; k++) {
+                        if (context[k].title === 'Screenshot') {
+                            const b64 = Buffer.from(context[k].value.split('base64,')[1], 'base64')
+                            const ibuf = await sharp(b64).resize(1024, 1024, { fit: 'contain' }).toBuffer()
+                            context[k].value = 'data:image/jpeg;base64,' + ibuf.toString('base64')
+                        }
+                    }
+                    mergedResults.suites.suites[i].tests[j].context = JSON.stringify(context)
+                }
+            }
+        }
+
         render(dir, mergedResults, customFileName)
     } catch (e) {
         console.log(e)

@@ -27,6 +27,19 @@
             .summary-col    {
                 width: 30%
             }
+            .click-zoom input[type=checkbox] {
+                display: none
+            }
+
+            .click-zoom img {
+                transition: transform 0.25s ease;
+                cursor: zoom-in
+            }
+
+            .click-zoom input[type=checkbox]:checked~img {
+                transform: scale(20);
+                cursor: zoom-out
+            }
         </style>
     </head>
 
@@ -141,7 +154,12 @@
                                     <td>
                                         {% if test.fail %}
                                             {% for img in renderImage(test.context) %}
-                                                <img alt="No screenshot" src="{{ img }}" width="50" height="50" />
+                                                <div class='click-zoom'>
+                                                    <label>
+                                                        <input type='checkbox' />
+                                                            <img alt="No screenshot" src="{{ img }}" width="50" height="50" />
+                                                    </label>
+                                                </div>
                                             {% endfor %}
                                         {% else %}
                                             &nbsp;
