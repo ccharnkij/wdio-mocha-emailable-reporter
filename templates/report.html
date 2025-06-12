@@ -130,7 +130,7 @@
                                             <p class="small">({{ name[1] }}</p>
                                         </td>
                                     {% endif %}
-                                    <td>{{ test.fullTitle }}</td>
+                                    <td>{{ test.fullTitle | safe}}</td>
 
                                     <!-- Status row -->
                                     {% if test.pass %}

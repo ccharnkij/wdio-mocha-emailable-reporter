@@ -87,7 +87,7 @@
                                             <p style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; font-size: .875em;">({{ name[1] }}</p>
                                         </td>
                                     {% endif %}
-                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" bgcolor="transparent">{{ test.fullTitle }}</td>
+                                    <td style="box-sizing: border-box; border-color: inherit; border-style: solid; padding: .5rem .5rem; background-color: transparent; border-bottom-width: 1px; box-shadow: inset 0 0 0 9999px transparent; border-width: 0 1px;" bgcolor="transparent">{{ test.fullTitle | safe}}</td>
 
                                     <!-- Status row -->
                                     {% if test.pass %}
